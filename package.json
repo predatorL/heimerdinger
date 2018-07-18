@@ -1,0 +1,25 @@
+{
+  "name": "heimerdinger",
+  "version": "0.0.1",
+  "description": "基于electron的操作台 执行脚本 添加爬虫 生成文档 生成excel",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/predatorL/heimerdinger.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "lihaiyang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/predatorL/heimerdinger/issues"
+  },
+  "homepage": "https://github.com/predatorL/heimerdinger#readme",
+  "devDependencies": {
+    "electron": "^2.0.5"
+  }
+}
