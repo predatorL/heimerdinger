@@ -2,3 +2,4 @@
 * (click) 点击事件绑定
 * *ngFor="let hero of heroes" 循环
 * [(ngModel)]="hero.name" input双向绑定
+* *ngIf="selectedHero" 条件判断
