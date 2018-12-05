@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "start-ng": "electron ./main-ng-win"
+    "start-ng": "electron ./main-ng-win",
+    "start-app": "electron app-start"
   },
   "repository": {
     "type": "git",
