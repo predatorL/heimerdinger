@@ -1,0 +1,912 @@
+<!DOCTYPE html
+><!--[if IE 8]><html lang="en" class="ie8"></html><!
+[endif]--><!--[if IE 9]><html lang="en" class="ie9"></html><!
+[endif]--><!-- [if !IE] <! -->
+<html lang="en">
+    <!-- <![endif]
+    --><!-- BEGIN HEAD
+    --><head>
+        <meta charset="utf-8" />
+        <title>智思云 考勤统计-报表</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="description" name="世界上最好用的人才管理平台" />
+        <meta content="author" name="Nick.Ma" />
+        <link rel="shortcut icon" href="https://www-cache.zhisiyun.com/img/favicon.png" />
+        <link href="https://www-cache.zhisiyun.com/assets/css/pace/pace-theme-minimal.css" rel="stylesheet" type="text/css" />
+        <script src="https://www-cache.zhisiyun.com/assets/plugins/pace.min.js" type="text/javascript"></script>
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="https://www-cache.zhisiyun.com/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/css/new_style2.css?v=20180208" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/css/style-gray.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/css/new_style-responsive.css" rel="stylesheet" type="text/css" />
+        <link id="style_color" href="https://www-cache.zhisiyun.com/assets/css/themes/new_default.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <link rel="stylesheet" href="https://www-cache.zhisiyun.com/assets/css/jquery-ui.css" />
+        <link href="https://www-cache.zhisiyun.com/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css" rel="stylesheet" type="text/css" />
+        <link href="https://www-cache.zhisiyun.com/js/plugins/chosen/chosen/chosen.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="/assets/fonts/iconfont03/iconfont.css?v=20170930" />
+        <link href="/assets/css/iconfont1.css?v=20180718" rel="stylesheet" type="text/css" />
+        <style>
+            html,
+            body {
+                min-width: 900px;
+            }
+            .scale-12-9 {
+                transform: scale(0.75);
+                -ms-transform: scale(0.75); /* IE 9 */
+                -moz-transform: scale(0.75); /* Firefox */
+                -webkit-transform: scale(0.75); /* Safari 和 Chrome */
+                -o-transform: scale(0.75); /* Opera */
+            }
+            .page-container.row-fluid.new_page_container {
+                margin-top: 44px;
+            }
+            #message_count {
+                border-radius: 50%;
+                font-size: 12px;
+                position: absolute;
+                display: inline-block;
+                height: 22px;
+                width: 22px;
+                text-align: center;
+                line-height: 22px;
+                margin-left: -10px;
+                margin-top: -6px;
+                background-color: #ee9f29;
+                font-family: STHeiti;
+                box-shadow: 0 1px 2px 0 rgba(255, 186, 86, 0.5);
+            }
+            #message_info {
+                width: 190px;
+                height: 42px;
+                position: absolute;
+                left: -80px;
+                top: 50px;
+                font-size: 12px;
+                padding: 15px;
+                opacity: 0.96;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+                color: #333;
+                background-color: #fffae2;
+            }
+        </style></head
+    ><!-- END HEAD
+    --><!-- BEGIN BODY -->
+    <body class="page-header-fixed page-footer-fixed">
+        <!-- BEGIN HEADER
+        --><input id="global_people_name" type="hidden" value="李海洋" /><input id="global_people_id" type="hidden" value="5b14a8e6a7b63bc02498b4e6" /><input
+            id="global_login_user"
+            type="hidden"
+            value="5b14a8e7a7b63bc02498b4e7"
+        /><input id="global_client_id" type="hidden" value="5a06658102fb3dbc1a47043c" /><input
+            id="global_client_config"
+            type="hidden"
+            value="{&quot;km_visible_all&quot;:null,&quot;is_pre_entry&quot;:&quot;1&quot;,&quot;zz_app_secret&quot;:null,&quot;standard_position&quot;:{&quot;position_code_rule&quot;:&quot;2&quot;,&quot;position_name_rule&quot;:&quot;2&quot;,&quot;enabled&quot;:false},&quot;people_card&quot;:{&quot;show_task&quot;:true,&quot;show_tm&quot;:true,&quot;show_pm&quot;:true,&quot;show_jobrank&quot;:true,&quot;show_jobgrade&quot;:true},&quot;train&quot;:{&quot;course_category&quot;:&quot;2&quot;},&quot;is_absence_sort&quot;:false,&quot;people_org_structure_config&quot;:{&quot;show_email&quot;:false,&quot;show_mobile&quot;:false,&quot;show_phone&quot;:false,&quot;department_charge_control&quot;:false,&quot;management_company_control&quot;:false},&quot;sign_config&quot;:{&quot;sign_remind&quot;:&quot;2&quot;,&quot;is_open&quot;:true},&quot;continuous_work_time&quot;:{&quot;interval_time&quot;:5,&quot;cwt_is_open&quot;:true},&quot;workflow&quot;:{&quot;comment&quot;:{&quot;zh&quot;:&quot;同意&quot;,&quot;en&quot;:&quot;Approval&quot;},&quot;use_close_attend_and_pa_menu&quot;:false,&quot;use_flow_skip&quot;:2,&quot;batch_overtime_use_overtime&quot;:false,&quot;handle_no_user&quot;:1,&quot;user_flow_withdrawn&quot;:0,&quot;use_all_user_in_pd_design&quot;:false,&quot;use_all_position_in_pd_design&quot;:false,&quot;use_all_user_in_sign&quot;:false,&quot;user_flow_type&quot;:false,&quot;use_conversation_im&quot;:true,&quot;user_closing&quot;:true},&quot;logo_img&quot;:{&quot;logo_height&quot;:120,&quot;logo_width&quot;:100},&quot;avatar&quot;:{&quot;height&quot;:120,&quot;width&quot;:100},&quot;zodiac&quot;:{&quot;send_zodiac&quot;:false},&quot;email&quot;:{&quot;e_host&quot;:&quot;smtp.exmail.qq.com&quot;,&quot;e_port&quot;:465,&quot;e_user&quot;:&quot;recruit@asiainnovations.com&quot;,&quot;e_pass&quot;:&quot;Yunzhi02&quot;,&quot;wxim_email&quot;:false},&quot;wangcai_device&quot;:[],&quot;wangcaikaoqin&quot;:{&quot;enable&quot;:null,&quot;company_id&quot;:&quot;&quot;},&quot;is_show_compensation&quot;:true,&quot;payrolls_order&quot;:[],&quot;attendances&quot;:[],&quot;payroll&quot;:{&quot;performance_interface_control&quot;:false,&quot;performance_interface&quot;:true,&quot;work_overtime_interface_control&quot;:false,&quot;work_overtime_interface&quot;:true,&quot;holiday_interface_control&quot;:false,&quot;holiday_interface&quot;:true,&quot;attendance_interface_control&quot;:false,&quot;attendance_interface&quot;:true,&quot;adjust_wf_control&quot;:true,&quot;is_new_social_security&quot;:false,&quot;is_confirm&quot;:false,&quot;pa_workflow&quot;:true,&quot;pay_start_date&quot;:&quot;1&quot;,&quot;pris&quot;:[],&quot;work_hours&quot;:174},&quot;assessment_instance&quot;:{&quot;calibration_forced_distribution_rule&quot;:&quot;BASIC_RULE&quot;,&quot;calibration_forced_distribution_show&quot;:true,&quot;calibration_grade_show&quot;:true,&quot;performance_rank_show&quot;:false,&quot;forced_distribution_grade_show&quot;:true,&quot;grade_show&quot;:true,&quot;score_show&quot;:true,&quot;data_collection_mode&quot;:&quot;PROCESS&quot;,&quot;start_leadtime&quot;:3,&quot;start_mode&quot;:&quot;MANUAL&quot;,&quot;release_mode&quot;:&quot;PEOPLE&quot;,&quot;calibration_mode&quot;:&quot;AI_GRADE&quot;},&quot;objective_plan&quot;:{&quot;range_color&quot;:[],&quot;start_leadtime&quot;:null,&quot;start_mode&quot;:null},&quot;work_plan_code&quot;:{&quot;nr_obj&quot;:null,&quot;src&quot;:null},&quot;work_time_code&quot;:{&quot;nr_obj&quot;:null,&quot;src&quot;:null},&quot;work_calendar_code&quot;:{&quot;nr_obj&quot;:null,&quot;src&quot;:null},&quot;index_type_enabled&quot;:false,&quot;questionnair_template_code&quot;:{&quot;nr_obj&quot;:&quot;QRTNR&quot;,&quot;src&quot;:&quot;MANUAL&quot;},&quot;payroll_package_code&quot;:{&quot;nr_obj&quot;:&quot;PYPNR&quot;,&quot;src&quot;:&quot;MANUAL&quot;},&quot;reward_punish_code&quot;:{&quot;nr_obj&quot;:&quot;PERNR&quot;,&quot;src&quot;:&quot;MANUAL&quot;},&quot;people_code&quot;:{&quot;nr_obj&quot;:&quot;PERNR&quot;,&quot;src&quot;:&quot;SYSTEM&quot;},&quot;position_code&quot;:{&quot;nr_obj&quot;:&quot;POSNR&quot;,&quot;src&quot;:&quot;SYSTEM&quot;},&quot;ou_code&quot;:{&quot;nr_obj&quot;:&quot;OUNR&quot;,&quot;src&quot;:&quot;SYSTEM&quot;}}"
+        /><input id="global_company_name" type="hidden" value="公司" /><input id="global_dept_name" type="hidden" value="部门" /><input
+            id="global_position_name"
+            type="hidden"
+            value="职位"
+        /><input id="one" type="hidden" value="周一" /><input id="two" type="hidden" value="周二" /><input id="three" type="hidden" value="周三" /><input
+            id="four"
+            type="hidden"
+            value="周四"
+        /><input id="five" type="hidden" value="周五" /><input id="six" type="hidden" value="周六" /><input id="seven" type="hidden" value="周日" /><input
+            id="you_have"
+            type="hidden"
+            value="您有"
+        /><input id="unread_msg" type="hidden" value="条未读消息" /><input id="to_be_done" type="hidden" value="项待办待完成" /><input
+            id="save_as_draft"
+            type="hidden"
+            value="保存至草稿"
+        /><input id="please_approval" type="hidden" value="请审批" /><input
+            id="del_tip"
+            type="hidden"
+            value="确认删除流程吗？
+        一旦删除将无法恢复！"
+        /><input id="please_select" type="hidden" value="请选择" /><input id="gaoji_search" type="hidden" value="高级搜索" /><input
+            id="shouqi_gaoji_search"
+            type="hidden"
+            value="收起高级搜索"
+        /><input id="balance_t" type="hidden" value="余额:" /><input id="msg_send_complete" type="hidden" value="通知发送完毕" /><input
+            id="loading_c"
+            type="hidden"
+            value="正在加载"
+        /><input id="pm_ed_con" type="hidden" value="编辑绩效合同" /><input id="u_pm_con_tohandle" type="hidden" value="您有一条绩效合同需要处理" /><input
+            id="agree_c"
+            type="hidden"
+            value="同意"
+        /><input id="notification_to_send" type="hidden" value="您有一条通知已经确认发送" /><input
+            id="notification_change"
+            type="hidden"
+            value="您有一条通知发生变更"
+        /><input id="notification" type="hidden" value="您收到一条通知" /><input id="you_are_invited_by" type="hidden" value="您被" /><input
+            id="to_answer"
+            type="hidden"
+            value="邀请回答"
+        /><input id="click_to_view_the_detail" type="hidden" value="详情请查看" /><input
+            id="answered_your_question"
+            type="hidden"
+            value="回答了您的问题"
+        /><input id="de_d" type="hidden" value="的" /><input
+            id="please_edit_your_performance"
+            type="hidden"
+            value="您有一条新的绩效计划流程已启动，请及时编辑您的绩效合同"
+        /><input id="a_performance_contract" type="hidden" value="您有一条绩效合同需要处理" /><input
+            id="performance_contract"
+            type="hidden"
+            value="绩效合同"
+        /><input id="performance_planning" type="hidden" value="绩效计划" /><input id="year_year" type="hidden" value="年年度" /><input
+            id="first_year"
+            type="hidden"
+            value="上半年"
+        /><input id="second_year" type="hidden" value="下半年" /><input id="one_quarter" type="hidden" value="年一季度" /><input
+            id="two_quarter"
+            type="hidden"
+            value="年二季度"
+        /><input id="three_quarter" type="hidden" value="年三季度" /><input id="four_quarter" type="hidden" value="年四季度" /><input
+            id="one_month"
+            type="hidden"
+            value="年一月"
+        /><input id="two_month" type="hidden" value="年二月" /><input id="three_month" type="hidden" value="年三月" /><input
+            id="four_month"
+            type="hidden"
+            value="年四月"
+        /><input id="five_month" type="hidden" value="年五月" /><input id="six_month" type="hidden" value="年六月" /><input
+            id="seven_month"
+            type="hidden"
+            value="年七月"
+        /><input id="eight_month" type="hidden" value="年八月" /><input id="nine_month" type="hidden" value="年九月" /><input
+            id="ten_month"
+            type="hidden"
+            value="年十月"
+        /><input id="eleven_month" type="hidden" value="年十一月" /><input id="twelev_month" type="hidden" value="年十二月" /><input
+            id="performance_confirmed"
+            type="hidden"
+            value="您有一条绩效计划流程已确认"
+        /><input id="performance_complete" type="hidden" value="您有一条绩效考核流程已启动，请及时评估您的绩效合同" /><input
+            id="performance_scorin"
+            type="hidden"
+            value="您有一条绩效考核流程需要评分"
+        /><input id="performance_conclusion" type="hidden" value="您有一条绩效考核流程已确认,请及时提交您的绩效总结" /><input
+            id="performance_conclusion_s"
+            type="hidden"
+            value="您有一条绩效考核流程已确认"
+        /><input id="you_have_a_performance_process" type="hidden" value="您有一条绩效流程" /><input
+            id="please_take_action_on_time"
+            type="hidden"
+            value="请尽快办理"
+        /><input id="performance_appraisal" type="hidden" value="绩效考评" /><input id="planning" type="hidden" value="计划阶段" /><input
+            id="evaluation_planning"
+            type="hidden"
+            value="评分阶段"
+        /><input id="editing_performance_contract" type="hidden" value="绩效计划编辑" /><input
+            id="approving_performance_contract"
+            type="hidden"
+            value="绩效计划审核"
+        /><input id="confirming_performance_contract" type="hidden" value="绩效计划确认" /><input id="data_collection" type="hidden" value="数据收集" /><input
+            id="self-evaluation"
+            type="hidden"
+            value="自评"
+        /><input id="line_manager" type="hidden" value="上级评" /><input id="evaluation_confirmed" type="hidden" value="考核已确认" />
+        <div class="header navbar navbar-inverse navbar-fixed-top hidden-print">
+            <!-- BEGIN TOP NAVIGATION BAR -->
+            <div style="height: 44px;position:relative;" class="navbar-inner new_year">
+                <div class="container-fluid">
+                    <!-- BEGIN LOGO -->
+                    <ul style="margin:0;height:44px;" class="pull-left">
+                        <li style="font-size:13px;margin: 15px;" class="dropdown">
+                            <a
+                                id="main_nav"
+                                style="top: -1px,display: inline-block;width: 70px;color:#fff"
+                                data-target="#"
+                                href="#"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                <i style="font-size:14px;" class="_iconfont icon-menu"></i><span> 导航</span></a
+                            >
+                        </li>
+                        <li style="margin-left: 25px;overflow: hidden;">
+                            <a id="logo" href="/" style="height:44px;line-height:44px;"
+                                ><img src="/gridfs/get/5ad02a3d446488f02430b952" alt="logo" style="height:32px"
+                            /></a>
+                        </li>
+                        <li id="js_weather_content">
+                            <div id="js_weather_main">
+                                <div id="js_weather_box"></div>
+                                <div id="js_weather_info"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- END LOGO
+                    --><!-- need add something Here -->
+                    <ul class="nav nav_menu pull-left">
+                        <li>
+                            <div id="notify_message" style="font-size:20px;padding-left:10px" class="navbar-text pull-left">
+                                <div id="nm_icon" class="inline"></div>
+                                <div id="nm_text" class="inline"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <ul class="nav pull-right new_nav">
+                        <!-- BEGIN NOTIFICATION DROPDOWN -->
+                        <li class="first_li"></li>
+                        <li class="dropdown">
+                            <a
+                                id="language"
+                                href="#"
+                                data-target="#"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                style="padding: 0;height: 44px;line-height:  44px;"
+                                class="dropdown-toggle"
+                            >
+                                <span style="margin:0 10px;margin-right: 4px;">中文</span
+                                ><span style="font-size: 10px;margin-top: 1px;transform: scale(0.6);" class="gisi-icon-xiala"></span
+                            ></a>
+                            <ul id="language_list" role="menu" aria-labelledby="language" class="dropdown-menu">
+                                <li><a href="javascript:;" data-type="zh">中 文</a></li>
+                                <li><a href="javascript:;" data-type="en">English</a></li>
+                            </ul>
+                        </li>
+                        <li style="height:20px;border-right:1px solid #fff;margin:12px 10px"></li>
+                        <li style="position:relative;">
+                            <a id="get_message" href="javascript:;" style="padding:10px 5px;"
+                                ><i style="font-size: 19px;font-weight: bold;" class="_iconfont icon-xingzhuang"></i
+                                ><span id="message_count" style="" class="scale-12-9">3</span></a
+                            >
+                            <div id="message_info" class="hide">
+                                <div style="padding-bottom: 4px;" class="close_btn">
+                                    <i
+                                        style="font-size: 12px;margin-top: -8px;margin-right: -8px;float: right;cursor: pointer;color: #666;"
+                                        class="_iconfont icon-icon_guanbi scale-12-9"
+                                    ></i>
+                                </div>
+                                <ul style="margin:0;padding:0;">
+                                    <li class="message">
+                                        <span> 您有1条未读消息</span><a href="/pc_message_list" style="margin-left: 10px;color: #54c7fc;"> 查看</a>
+                                    </li>
+                                    <li class="task_to_do">
+                                        <span> 您有2项待办待完成</span><a href="/admin/wf/todo_list" style="margin-left: 10px;color: #54c7fc;"> 处理</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/" style="padding-top: 11px;"><i style="font-size: 18px;font-weight: bold;" class="_iconfont icon-xingzhuangUI"></i></a>
+                        </li>
+                        <li style="height:20px;border-right:1px solid #fff;margin:10px 0"></li>
+                        <li id="self_index_btn" class="hide"><a href="#" style="padding-top: 12px;"> 个性化</a></li>
+                        <li style="margin: -1px 7px 0 0;" class="dropdown">
+                            <a
+                                id="user_info"
+                                href="#"
+                                data-target="#"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                style="padding: 0;"
+                                class="dropdown-toggle"
+                            >
+                                <span style="display: inline-block;width:30px;height:30px;margin-top: 8px;border-radius:50%;text-align: center;"
+                                    ><img
+                                        alt=""
+                                        src="/gridfs/get/569465bc399215115bed72a1"
+                                        width="30"
+                                        height="30"
+                                        style="width:30px;height:30px;"
+                                        class="inline img-circle"/></span
+                                ><span style="margin:0 10px;margin-right: 4px;">李海洋</span
+                                ><span style="font-size: 10px;margin-top: 1px;transform: scale(0.6);" class="gisi-icon-xiala"></span
+                            ></a>
+                            <ul id="user_list" role="menu" aria-labelledby="user_info" class="dropdown-menu">
+                                <li id="todo_list" style="display: none;">
+                                    <a href="/admin/wf/todo_list"
+                                        ><span style="font-size: 15px;width: 16px;text-indent: 2px;" class="gisi-icon-daiban"></span
+                                        ><span style="margin-left: 10px;"> 我的待办</span></a
+                                    >
+                                </li>
+                                <li id="mylist" style="display: none;">
+                                    <a href="/admin/wf/process_instance/mylist"
+                                        ><span style="font-size: 16px;width: 16px;" class="gisi-icon-liucheng"></span
+                                        ><span style="margin-left: 10px;"> 流程清单</span></a
+                                    >
+                                </li>
+                                <li id="finished_list" style="display: none;">
+                                    <a href="/admin/wf/finished_list"
+                                        ><span style="font-size: 16px;width: 16px;" class="gisi-icon-liucheng"></span
+                                        ><span style="margin-left: 10px;"> 已办任务</span></a
+                                    >
+                                </li>
+                                <li id="profile_user" style="display: none;">
+                                    <a href="/profile_user">
+                                        <span style="font-size: 10px;width: 16px;transform: scale(0.9);" class="gisi-icon-ziliao"></span
+                                        ><span style="margin-left: 10px;"> 我的资料</span></a
+                                    >
+                                </li>
+                                <li id="personal_report" style="display: none;">
+                                    <a href="/admin/py/personal_report_search/personal_report">
+                                        <span style="font-size: 14px;width: 16px;" class="gisi-icon-gongzi"></span
+                                        ><span style="margin-left: 10px;"> 我的工资</span></a
+                                    >
+                                </li>
+                                <li id="help" style="display: none;">
+                                    <a href="/help"
+                                        ><span style="font-size: 14px;width: 16px;" class="gisi-icon-bangzhushouce"></span
+                                        ><span style="margin-left: 10px;"> 帮助手册</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <a id="js_change_sysmsg" href="/admin/sysmsg" target="_blank" style="display: none;"
+                                        ><span style="font-size: 14px;width: 16px;" class="gisi-icon-xinxi"></span
+                                        ><span style="margin-left: 10px;"> 系统消息</span></a
+                                    >
+                                </li>
+                                <li id="update_use_new_index">
+                                    <a href="javascript:;">
+                                        <span style="font-size: 14px;width: 16px;" class="_iconfont icon-xingzhuangUI"></span
+                                        ><span style="margin-left: 10px;"> 旧版首页</span></a
+                                    >
+                                </li>
+                                <li id="logout">
+                                    <a href="/logout">
+                                        <span style="font-size: 15px;width: 16px;" class="gisi-icon-exit"></span
+                                        ><span style="margin-left: 10px;"> 退出登录</span></a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="switch_city_model" tabindex="-1" class="modal fade hide">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="gisi-icon-yichu2"></button>
+                        <h4 class="modal-title">切换城市</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="js_city_index" role="tablist" class="nav nav-tabs"></ul>
+                        <div id="js_city_select" class="tab-content"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn-switch_city" type="button" class="btn-blue">确 认</button
+                        ><!-- END USER LOGIN DROPDOWN -->
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+            </div>
+            <!-- END TOP NAVIGATION BAR -->
+        </div>
+        <!-- END HEADER
+        --><!-- BEGIN CONTAINER -->
+        <div class="page-container row-fluid new_page_container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM
+                --><!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM
+                --><!-- BEGIN PAGE CONTAINER -->
+                <div id="js_container_fluid" style="position: relative;" class="container-fluid">
+                    <!-- END PAGE HEADER
+                    --><!-- BEGIN PAGE CONTENT -->
+                    <ul id="js_main_menu" role="main_menu" aria-labelledby="main_nav" style="left:-162px;" class="main_nav_list dropdown-menu">
+                        <li id="mi_pa" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-renshi"></span><span class="title sidebar-english"> 人事管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="51a6e4404a68c6dc44000003" class="dropdown-submenu"><a class="title" href="#">人事流程</a></li>
+                            </ul>
+                        </li>
+                        <li id="mi_tm" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-shijian"></span><span class="title sidebar-english"> 时间管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="53e30ab3ce4549d05300010d" class="dropdown-submenu">
+                                    <a class="title" href="#">考勤管理<span class="gisi-icon-jiantou"></span></a>
+                                    <ul class="dropdown-menu main_nav_list">
+                                        <li id="53e3144e088ef8f311000880" class="dropdown-submenu">
+                                            <a class="title" href="/admin/tm/workplan/my_team_v2">团队排班</a>
+                                        </li>
+                                        <li id="54054108b3ccad9b39000122" class="dropdown-submenu">
+                                            <a class="title" href="#">考勤报表<span class="gisi-icon-jiantou"></span></a>
+                                            <ul class="dropdown-menu main_nav_list">
+                                                <li id="552f2ec2450d1b3f05edacd4" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm/cardrecord/my_attend_report">我的考勤统计</a>
+                                                </li>
+                                                <li id="53e9abcd08918dfc4100016f" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm/cardrecord/hr_list_v2">我的考勤日志</a>
+                                                </li>
+                                                <li id="551bb5bb1b0d67ab74e0dab0" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/checkin/list">我的签到报表</a>
+                                                </li>
+                                                <li id="54054394b3ccad9b39000125" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm/beyond_work/report_emp_list">我的加班汇总</a>
+                                                </li>
+                                                <li id="53e9a8fd08918dfc4100016e" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm/cardrecord/record_list">我的打卡记录</a>
+                                                </li>
+                                                <li id="5993119836e8eca2035b43a7" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm_reborn/work_plan_people/workplan_report">排班班次报表</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="53e30b46638fdecc53000113" class="dropdown-submenu">
+                                    <a class="title" href="#">假期管理<span class="gisi-icon-jiantou"></span></a>
+                                    <ul class="dropdown-menu main_nav_list">
+                                        <li id="53fd4d48ffeb764c4e00011d" class="dropdown-submenu">
+                                            <a class="title" href="/admin/tm/vacation_report">假期报表<span class="gisi-icon-jiantou"></span></a>
+                                            <ul class="dropdown-menu main_nav_list">
+                                                <li id="53ffeb3eac0678bd0c00011e" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm/absence/report_emp_list">我的假期汇总</a>
+                                                </li>
+                                                <li id="540811f07c25e0a30d000127" class="dropdown-submenu">
+                                                    <a class="title" href="/admin/tm/absence/report_emp_leave_list">我的假期余额</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="55262f350574012636e51452" class="dropdown-submenu"><a class="title" href="/admin/tm/work_travel/list">差旅报表</a></li>
+                            </ul>
+                        </li>
+                        <li id="mi_py" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-xinchou"></span><span class="title sidebar-english"> 薪酬管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="52f59f0d7cf5c47d3100008e" class="dropdown-submenu">
+                                    <a class="title" href="/admin/py/personal_report_search/personal_report">个人薪酬报表</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mi_pm" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-jixiao"></span><span class="title sidebar-english"> 绩效管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="59cf443ca8bbbcb6316b74bd" class="dropdown-submenu"><a class="title" href="/admin/pm/pm_index/form">绩效首页</a></li>
+                                <li id="59cf41629fb62aa0362fce89" class="dropdown-submenu">
+                                    <a class="title" href="#">我的绩效管理<span class="gisi-icon-jiantou"></span></a>
+                                    <ul class="dropdown-menu main_nav_list">
+                                        <li id="5311b7d548e5d275760012ca" class="dropdown-submenu">
+                                            <a class="title" href="/admin/pm/assessment_instance/track/list">我的绩效流程</a>
+                                        </li>
+                                        <li id="532a88da489d9a0fa6002001" class="dropdown-submenu">
+                                            <a class="title" href="/admin/pm/template/analyze?mode=my_performance">我的绩效报表</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mi_ta" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-rencai"></span><span class="title sidebar-english"> 人才管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="533a8c58906e774d480000bc" class="dropdown-submenu">
+                                    <a class="title" href="#">360能力测评问卷管理<span class="gisi-icon-jiantou"></span></a>
+                                    <ul class="dropdown-menu main_nav_list">
+                                        <li id="533b64578bd3f999030000be" class="dropdown-submenu">
+                                            <a class="title" href="/admin/pm/questionnair_template/my_report360">我的360能力测评问卷</a>
+                                        </li>
+                                        <li id="533a950048b8f3d0660000c0" class="dropdown-submenu">
+                                            <a class="title" href="/admin/pm/questionnair_template/grade360AndCA">问卷评分管理</a>
+                                        </li>
+                                        <li id="570c5ee26223139778340f70" class="dropdown-submenu">
+                                            <a class="title" href="/admin/pm/questionnair_template/grade360OU">问卷评分管理(部门)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mi_FR" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-chaosonggeiwodeliucheng"></span><span class="title sidebar-english"> 流程管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="545a1fa42237520f2f000154" class="dropdown-submenu">
+                                    <a class="title" href="/admin/wf/universal/pd_panel">我的工作流</a>
+                                </li>
+                                <li id="5ac2df28fa85b3ce6f8b4e4c" class="dropdown-submenu">
+                                    <a class="title" href="/admin/wf/process_instance_batch/list">批量流程审批</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mi_stm" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-gongzuo"></span><span class="title sidebar-english"> 工作管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="5497836272e855ed36000163" class="dropdown-submenu">
+                                    <a class="title" href="/admin/pm/coll_project/bbform">协作项目</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mi_ta" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span style="margin-right:11px;color: #999999;" class="iconfont icon-icon_guquanjl_nav"></span
+                                ><span class="title sidebar-english">股权激励</span><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="5acc19a8a8ec8aac2639fc54" class="dropdown-submenu">
+                                    <a class="title" href="/admin/stock/exercise/employee/awarded">个人行权列表</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="mi_img" class="dropdown-submenu">
+                            <a href="javascript:;"
+                                ><span class="gisi-icon-xitong"></span><span class="title sidebar-english"> 系统管理</span
+                                ><span class="gisi-icon-jiantou"></span
+                            ></a>
+                            <ul class="dropdown-menu main_nav_list">
+                                <li id="53997d164785955a270000ed" class="dropdown-submenu">
+                                    <a class="title" href="/admin/pm/process_agency/start">流程代理申请</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="js_body_main">
+                        <link rel="stylesheet" type="text/css" href="/assets/css/cardList.css" />
+                        <div class="well well-dataTable">
+                            <input id="week_one" type="hidden" value="一" /><input id="week_two" type="hidden" value="二" /><input
+                                id="week_three"
+                                type="hidden"
+                                value="三"
+                            /><input id="week_four" type="hidden" value="四" /><input id="week_five" type="hidden" value="五" /><input
+                                id="week_six"
+                                type="hidden"
+                                value="六"
+                            /><input id="week_seven" type="hidden" value="日" /><input id="mins_c" type="hidden" value="分钟" /><input
+                                id="absence_c"
+                                type="hidden"
+                                value="缺勤"
+                            /><input id="absence_c" type="hidden" value="缺勤" /><input id="absence_c" type="hidden" value="缺勤" /><input
+                                id="absence_c"
+                                type="hidden"
+                                value="缺勤"
+                            /><input id="correction_card_record" type="hidden" value="修正打卡记录" />
+                            <legend>
+                                李海洋 的考勤统计<i id="question_help" class="icon-question-sign"></i>
+                                <div style=" margin-top: 0px; " class="btn-toolbar pull-right">
+                                    <div class="btn-group">
+                                        <button id="btn_prev_month" type="button" class="btn btn-small btn-warning">
+                                            <i class="icon-arrow-left"></i>上一月</button
+                                        ><button id="btn_current_month" type="button" class="btn btn-small btn-warning">当月</button
+                                        ><button id="btn_next_month" type="button" class="btn btn-small btn-warning">
+                                            下一月<i class="icon-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </legend>
+                            <form class="form-horizontal row-fluid">
+                                <input id="select_people" type="hidden" value="" /><input id="use_tm_reborn_workflow" type="hidden" value="true" /><input
+                                    id="login_people"
+                                    type="hidden"
+                                    value="5b14a8e6a7b63bc02498b4e6"
+                                /><input
+                                    id="roleCodes"
+                                    value="[{&quot;_id&quot;:&quot;5a06690dc0f1acf8684174ce&quot;,&quot;role_code&quot;:&quot;ESS&quot;}]"
+                                    type="hidden"
+                                /><input id="validFrom" type="text" data-field="start" placeholder="开始时间" value="" style="width:85px;" /><input
+                                    id="validTo"
+                                    type="text"
+                                    data-field="end"
+                                    placeholder="结束时间"
+                                    value=""
+                                    style="width:85px;"
+                                /><button id="btn_search" type="button" style="" title="查找" class="btn search"><i class="icon-search text-info"></i></button>
+                                <table id="tblAttendResult" style="width:100%;margin-bottom:0;" class="responsive table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%" class="no_sort">上班日期</th>
+                                            <th width="5%">周</th>
+                                            <th width="5%">工作日</th>
+                                            <th width="10%">班次</th>
+                                            <th width="7%">上班打卡</th>
+                                            <th width="7%">迟到</th>
+                                            <th width="7%">下班打卡</th>
+                                            <th width="7%">早退</th>
+                                            <th width="7%">旷工</th>
+                                            <th width="7%">缺勤</th>
+                                            <th width="5%">正常</th>
+                                            <th width="15%" class="no_sort">考勤事件</th>
+                                            <th width="10%" class="no_sort">操 作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="work_result_tb"></tbody>
+                                    <tfoot id="work_result_foot"></tfoot>
+                                </table>
+                            </form>
+                        </div>
+                        <script type="text/x-handlebars-template" id="tmp_work_result_new">
+                            {{#each data}}<tr data-index="{{@index}}"><td width="10%">{{toISODate wrp.date}}</td><td>{{{day_of_week wrp.date}}}</td><td>{{#if wrp.is_job_day}}<i style="color:green" class="icon-ok"></i>{{/if}}</td>{{#if is_normal_clock}}
+                                    {{#if wrp.is_job_day}}<td><label class="label label-info">{{work_time.name}}  {{{show_worktime work_time}}}</label></td><td class="sign_in"><div style="white-space:nowrap">{{{show_sign no_sign_in sign_in_time is_come_late}}}
+                                    {{{show_sign_position no_sign_in sign_in_position sign_in_position_short}}}</div></td><td>{{#if is_come_late}}<a href="/admin/tm/cardrecord/record_list?people_id={{wrp.people._id}}&amp;people_name={{wrp.people.people_name}}" class="label label-warning">{{late_mins}}分钟</a>{{/if}}</td><td class="sign_out"><div style="white-space:nowrap">{{{show_sign no_sign_out sign_out_time is_leave_early}}}
+                                    {{{show_sign_position no_sign_out sign_out_position sign_out_position_short}}}</div></td><td>{{#if is_leave_early}}<a href="/admin/tm/cardrecord/record_list?people_id={{wrp.people._id}}&amp;people_name={{wrp.people.people_name}}" class="label label-warning">{{early_mins}}分钟</a>{{/if}}</td><td>{{{show_absenteeism absenteeism wrp.date}}}</td><td>{{{is_absent absent_mins}}}</td><td>{{{show_full_work is_full_work wrp.date no_sign_in no_sign_out }}}</td>{{else}}<td></td><td class="sign_in"><div style="white-space:nowrap">{{{show_sign no_sign_in sign_in_time is_come_late}}}
+                                    {{{show_sign_position no_sign_in sign_in_position sign_in_position_short}}}</div></td><td></td><td class="sign_out"><div style="white-space:nowrap">{{{show_sign no_sign_out sign_out_time is_leave_early}}}
+                                    {{{show_sign_position no_sign_out sign_out_position sign_out_position_short}}}</div></td><td></td><td></td><td></td><td></td>{{/if}}
+                                    {{else}}
+                                    {{#if wrp.is_job_day}}<td><label class="label label-info">{{work_time.name}}  {{{show_worktime work_time}}}</label></td>{{else}}<td></td>{{/if}}<td class="sign_in"><div style="white-space:nowrap">{{{show_sign no_sign_in sign_in_time is_come_late}}}
+                                    {{{show_sign_position no_sign_in sign_in_position sign_in_position_short}}}</div></td><td></td><td class="sign_out"><div style="white-space:nowrap">{{{show_sign no_sign_out sign_out_time is_leave_early}}}
+                                    {{{show_sign_position no_sign_out sign_out_position sign_out_position_short}}}</div></td><td></td><td></td><td></td><td>{{#if wrp.is_job_day}}<i style="color:green" class="icon-ok"></i>{{/if}}</td>{{/if}}<td>{{#if sign_in_change}}<a data-type="in" data-date="{{toISODate wrp.date}}" data-people="{{wrp.people._id}}" data-worktime="{{work_time._id}}" class="label label-warning result_change_click">考勤异常已处理(上班)</a>{{/if}}
+                                    {{#if sign_out_change}}<a data-type="out" data-date="{{toISODate wrp.date}}" data-people="{{wrp.people._id}}" data-worktime="{{work_time._id}}" class="label label-warning result_change_click">考勤异常已处理(下班)</a>{{/if}}
+                                    {{#if wrp.ask_for_leave}}
+                                    {{#each wrp.leave_arr}}
+                                    {{#eq o_type "single"}}<a href="/admin/tm/wf_leave_of_absence/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{else}}<a href="/admin/tm/batch_leave/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{/eq}}
+                                    {{/each}}
+                                    {{/if}}
+                                    {{#if wrp.cancel_ask_for_leave}}<a href="/admin/tm/wf_back_after_leave_of_absence/view/{{wrp.cancel_ref_wf_afl_oid}}" target="_blank" class="label label-warning">假期调整</a>{{/if}}
+                                    {{#if wrp.ask_for_overtime}}
+                                    {{#each wrp.overtime_arr}}
+                                    {{#eq o_type "single"}}<a href="/admin/tm/beyond_work/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{else}}<a href="/admin/tm/batch_workovertime/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{/eq}}
+                                    {{/each}}
+                                    {{/if}}
+                                    {{#if wrp.cancel_ask_for_overtime}}<a href="/admin/tm/wf_cancel_absence_of_three/view/{{wrp.cancel_ref_wf_afo_oid}}" target="_blank" class="label label-warning">加班调整</a>{{/if}}
+                                    {{#if wrp.in_city_business}}
+                                    {{#each wrp.city_arr}}
+                                    {{#eq o_type 'single'}}<a href="/admin/tm/work_city/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{else}}<a href="/admin/tm/batch_work_city/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{/eq}}
+                                    {{/each}}
+                                    {{/if}}
+                                    {{#if wrp.on_business_trip}}
+                                    {{#each wrp.trip_arr}}
+                                    {{#eq o_type "single"}}<a href="/admin/tm/work_travel/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{else}}<a href="/admin/tm/batch_work_travel/view/{{pi_id}}" target="_blank" class="label label-warning"><span>{{str}}</span></a>{{/eq}}
+                                    {{/each}}
+                                    {{/if}}
+                                    {{{show_check_data wrp.check_data}}}
+                                    {{#if sign_break_card}}
+                                    {{{show_label sign_break_card}}}
+                                    {{/if}}
+                                    {{#if sign_break_card2}}
+                                    {{{show_label sign_break_card2}}}
+                                    {{/if}}</td><td>{{#show_result_change ../result_change_ready is_full_work wrp.people._id}}<a data-toggle="modal" title="考勤异常申请流程" data-value="{{toISODate wrp.date}}" data-name="{{wrp.people._id}}" class="a_btn_dialog btn btn-small"><i class="icon-list"></i></a>{{{show_adjust_operate}}}
+                                    {{else}}<a title="考勤异常申请流程" disabled class="btn btn-small"><i class="icon-list"></i></a>{{{show_adjust_operate}}}
+                                    {{/show_result_change}}</td></tr>{{/each}}</script
+                        ><script type="text/x-handlebars-template" id="tmp_work_result_foot">
+                            <tr><td>考勤统计{{job_days}}天</td><td></td><td></td><td></td><td>上班未打卡 {{no_sign_in_times}}次</td><td>迟到{{late_mins}}分钟</td><td>下班未打卡{{no_sign_out_times}}次</td><td>早退{{early_mins}}分钟</td><td>旷工{{absenteeism_times}}次</td><td>缺勤{{absent_mins}}分钟</td><td></td><td></td><td></td></tr>
+                        </script>
+                        <div
+                            id="Modal_btn"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="ihModalLabel"
+                            aria-hidden="true"
+                            style="display:none;width:400px;margin-left:-200px;top:50%;margin-top:-200px;"
+                            class="modal hide fade"
+                        >
+                            <div class="modal-header">
+                                <button data-dismiss="modal" aria-hidden="true" class="close"></button>
+                                <h4 class="modal-title text-center">选择考勤异常处理方式</h4>
+                            </div>
+                            <div style="height:188px;text-align:center" class="modal-body">
+                                <ul class="dialog_btn_ul share_status">
+                                    <li data-adv_state="0" class="label_2 active">异常处理</li>
+                                    <li data-adv_state="1" class="label_2">请假申请</li>
+                                    <li data-adv_state="2" class="label_2">出差申请</li>
+                                    <li data-adv_state="3" class="label_2">市区公干</li>
+                                </ul>
+                            </div>
+                            <div style="background-color:#f6f6f6 !important" class="modal-footer">
+                                <button style="background-color: transparent;color:#bbb;" data-dismiss="modal" class="btn-blue">取消</button
+                                ><button id="btn_ok" data-dismiss="modal" class="btn-blue confirm">确认</button>
+                            </div>
+                        </div>
+                        <div
+                            id="ihModal"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="ihModalLabel"
+                            aria-hidden="true"
+                            style="display: none;width:500px;margin-left:-300px"
+                            data-backdrop="static"
+                            data-keyboard="false"
+                            class="modal hide fade"
+                        >
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"></button>
+                                <h4 style="font-size:16px;margin:0 0 0 5px;" class="black"></h4>
+                            </div>
+                            <div style="height:350px;" class="modal-body">
+                                <form style="margin:20px 20px 0 20px;">
+                                    <div style="margin-top: 20px;" class="form-group">
+                                        <p>请选择上班时间</p>
+                                        <select
+                                            id="clock_in"
+                                            name="job_day"
+                                            style="width:100%;margin:-3px 0 0 0;color:#666;font-size:12px;padding:0px;"
+                                            class="form-control"
+                                        ></select>
+                                        <p>请选择下班时间</p>
+                                        <select
+                                            id="clock_out"
+                                            name="job_day"
+                                            style="width:100%;margin:-3px 0 0 0;color:#666;font-size:12px;padding:0px;"
+                                            class="form-control"
+                                        ></select>
+                                        <div id="wt_data" style="margin-top:8px;"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div style="height:40px;" class="modal-footer">
+                                <button
+                                    id="btn_save"
+                                    style="width:100px;height:32px;font-size: 14px;color: white;background-color: #54c7fc;background-image:none;margin:0px 0 0 0;margin-left: 10px;border-radius: 15px;"
+                                    class="pull-right btn btn-default"
+                                >
+                                    确认</button
+                                ><button
+                                    style="width:100px;height:32px;font-size: 14px;color: white;background-color: #54c7fc;background-image:none;margin:0px 0 0 0;border-radius: 15px;"
+                                    data-dismiss="modal"
+                                    class="pull-right btn btn-default"
+                                >
+                                    取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTENT -->
+                </div>
+                <!-- END PAGE CONTAINER -->
+            </div>
+            <!-- END PAGE -->
+        </div>
+        <!-- END CONTAINER -->
+        <div
+            id="ihModalNotifyMsg"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="ihModalNotifyMsgLabel"
+            aria-hidden="true"
+            style="display: none;position: fixed;top: 38%;background-color: rgba(0, 0, 0, 0.6);border: none;border-radius: 10px;min-height: 80px; min-width: 240px;"
+            class="modal hide fade"
+        >
+            <div id="modal_body" style="text-align: center;" class="modal-body">
+                <i id="dlg_icon" style="font-size: 52px;line-height: 80px;padding-left: 10px;" class="gisi-icon-chenggong"></i>
+                <div id="dlg_msg" style="color:#ffffff;font-size:18px;padding: 10px;position:relative;top:-14px;display:inline-block">成功！</div>
+            </div>
+        </div>
+        <!-- BEGIN FOOTER
+        --><!-- END FOOTER -->
+        <div id="fullscreen-overlay" style="display:none;" class="fullscreen-overlay"></div>
+        <div
+            id="toast"
+            style="top: 38%;position: fixed;z-index: 11000;min-width: 200px;background: yellow;left: calc(50% - 120px);border-radius: 10px;height: 80px;padding: 0 20px;background: rgba(0,0,0,0.6);padding-left: 30px;display:none"
+            class="text-center"
+        >
+            <i style="text-align: center;font-size: 14px;display: inline-flex;top: -38px;" class="loader"></i
+            ><small id="toast_title" style="color: #ffffff;font-size: 18px;margin-left: 30px;position: relative;top: -38px;"> 正在加载</small>
+        </div>
+        <div id="map_container"></div>
+        <div id="common_confirm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;position: fixed;top:35%;" class="modal hide fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="confirm_close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <p id="js_confirm_title">温馨提示</p>
+                    </div>
+                    <div style="text-align: center;" class="modal-body">
+                        <div id="js_confirm_msgbox"><p id="js_confirm_msg">你确定要删除这位联系人吗</p></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_confirm_cancel" type="button" data-dismiss="modal" class="btn-blue">取消</button
+                        ><button id="btn_confirm_ok" type="button" class="btn-blue">确 认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/x-handlebars-template" id="tmp_weather_box">
+            <a id="js_weather_listshow" href="javascript:;">       <div id="weather-icon" style="margin-top:10px;"><img src="{{iconURL}}"></div><span style="display: inline-block;margin-left: -10px;margin-right: 6px;font-size: 12px;margin-top: -4px;line-height: 14px;"><div id="open-weather" style="padding-left: 10px;">{{temperature}}</div><div id="weather-description" style="text-align: center;">{{description}}</div></span></a><span style="position: relative;top: -5px;display: inline-block;border-left: 2px solid #fff;height: 26px;line-height: 26px;padding-left: 8px;font-size:13px" id="city_name">{{city}} </span><div id="switch_city" style="top:-5px;"><span style="padding:5px;" class="arrow arrow-right"></span><span style="padding:8px;" class="arrow arrow-left"></span></div></script
+        ><script type="text/template7" id="tmp_head_weather">
+            <div class="weather_today_box"><img src="{{iconURL}}" style="height:50px;width:50px;display: inline-block;float: left;"><div class="weather_today_desc"><p style="font-size:19px;margin-bottom:0;" class="color-white">{{city_name}}</p><p style="font-size:12px;margin-bottom:0;"><span style="margin-right:10px;" class="color-white"> 今天</span><span class="color-white">{{description}}</span></p></div><div class="weather_now_tmp"><span style="font-size:40px;" class="color-white">{{now_tmp}}°</span></div><span style="font-size:14px;position:absolute;right:60px;top:15px" class="color-white">{{max_tmp}}°</span><span style="font-size:14px;position:absolute;right:20px;top:15px;opacity:0.5" class="color-white">{{min_tmp}}°</span></div><div class="weather_info_line"></div><div class="weather_list">{{#each other_day}}      <div class="weather_ele"><div class="color-white">{{weekday}}</div><img src="{{iconURL}}"><div class="weather_tmp_max">{{max_tmp}}°</div><div class="weather_tmp_min">{{min_tmp}}°</div></div>{{/each}}</div></script
+        ><!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time)
+        --><!-- BEGIN CORE PLUGINS
+        --><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/jquery.js"></script
+        ><!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip
+        --><script src="https://www-cache.zhisiyun.com/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script
+        ><!--[if lt IE 9
+            ]><script src="https://www-cache.zhisiyun.com/assets/plugins/excanvas.min.js"></script
+            ><script src="https://www-cache.zhisiyun.com/assets/plugins/respond.min.js"></script><!
+        [endif]--><script src="https://www-cache.zhisiyun.com/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/jquery.sparkline.min.js" type="text/javascript"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/jquery.touchdown.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery.tinyscrollbar.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/jnavigate.jquery.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/jquery.touchSwipe.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery.peity.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/wysihtml5-0.3.0.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/bootstrap-wysihtml5.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/textarea-autogrow.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/character-limit.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery.maskedinput-1.3.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/chosen/chosen/chosen.jquery.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/bootstrap-colorpicker.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery-queryParser.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery.jeditable.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/FixedHeader.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/KeyTable.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/highstock.js"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/highcharts-more.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/modules/exporting.js" type="text/javascript"></script
+        ><link rel="stylesheet" href="https://www-cache.zhisiyun.com/assets/plugins/data-tables/DT_bootstrap.css" /><script
+            type="text/javascript"
+            src="https://www-cache.zhisiyun.com/js/plugins/datatables/js/jquery.dataTables.min.js"
+        ></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/data-tables/DT_bootstrap.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery.clock.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/jquery.sprintf.js"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/underscore.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/moment.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/lang/zh.js" type="text/javascript"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/i18next-1.6.0.js" type="text/javascript"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/i18next.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/i18next-jquery.min.js"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/plugins/jquery.fseditor-min.js" type="text/javascript"></script
+        ><script type="text/javascript" src="/pagejs/new_pc/user.init2.js?v=ce43ea03c14741564594a4cce7d61891"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/new_base/bb/backbone-min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/handlebars-v1.1.2.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/new_base/3rd_party/async.min.js"></script
+        ><script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&amp;key=1a54b759d2c9ad3680881c01cb4cfcad"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/fonts/iconfont03/iconfont.js"></script
+        ><script type="text/javascript" src="/pagejs/new_pc/suggest.city.min.js"></script
+        ><script type="text/javascript" src="/pagejs/new_pc/admin.common2.js?v=ccc6731dcad9ec4d473109cfb3c3740b"></script
+        ><script type="text/javascript" src="/pagejs/common/flow.js?v=62139c134c72f012bc93648a98dee473"></script
+        ><script type="text/javascript" src="/pagejs/admin.workflow.common.start_form.js?v=36a20a360d613f25d057215fd4cef67b"></script
+        ><!-- END CORE PLUGINS
+        --><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/async.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/handlebars-v1.1.2.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/backbone.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/backbone.marionette.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/assets/plugins/jquery.layout-latest.min.js"></script
+        ><link rel="stylesheet" type="text/css" href="https://www-cache.zhisiyun.com/assets/css/layout-default-latest.css" /><script
+            type="text/javascript"
+            src="https://www-cache.zhisiyun.com/js/plugins/JQuery-zTree-v3.5.14/js/jquery.ztree.core-3.5.js"
+        ></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/JQuery-zTree-v3.5.14/js/jquery.ztree.excheck-3.5.min.js"></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/JQuery-zTree-v3.5.14/js/jquery.ztree.exhide-3.5.min.js"></script
+        ><script src="https://www-cache.zhisiyun.com/assets/new_base/3rd_party/jquery.querystring.js" type="text/javascript"></script
+        ><link href="https://www-cache.zhisiyun.com/js/plugins/JQuery-zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" /><script
+            type="text/javascript"
+            src="/pagejs/admin.tm_reborn.card_list.js?v=e3580657ca2e7b1b6daf0b24b5e5f64c"
+        ></script
+        ><script src="https://www-cache.zhisiyun.com/assets/new_base/mobiscroll/js/mobiscroll.custom-2.15.0.min.js" type="text/javascript"></script
+        ><link href="https://www-cache.zhisiyun.com/assets/new_base/mobiscroll/css/mobiscroll.custom-2.15.0.min.css" rel="stylesheet" type="text/css" /><script
+            type="text/javascript"
+            src="https://www-cache.zhisiyun.com/js/plugins/FixedColumns-2.0.3/media/js/FixedColumns.min.js"
+        ></script
+        ><script type="text/javascript" src="https://www-cache.zhisiyun.com/js/plugins/TableTools-2.1.5/media/js/TableTools.min.js"></script
+        ><link href="https://www-cache.zhisiyun.com/js/plugins/TableTools-2.1.5/media/css/TableTools.css" rel="stylesheet" /><style>
+            #tblAttendResult_length label {
+                margin-top: 10px;
+            }</style
+        ><!-- END JAVASCRIPTS -->
+    </body>
+    <!-- END BODY -->
+</html>

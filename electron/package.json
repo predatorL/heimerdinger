@@ -2,7 +2,7 @@
   "name": "heimerdinger",
   "version": "0.0.1",
   "description": "基于electron的操作台 执行脚本 添加爬虫 生成文档 生成excel",
-  "main": "main.js",
+  "main": "app-start.js",
   "scripts": {
     "start": "electron .",
     "start-ng": "electron ./main-ng-win",
