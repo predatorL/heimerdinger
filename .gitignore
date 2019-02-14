@@ -65,3 +65,6 @@ typings/
 
 # other
 .DS_Store
+
+# config
+local_config.json

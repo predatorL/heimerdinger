@@ -11,5 +11,8 @@
 * iframe.evaluate() 在浏览器中执行函数，相当于在控制台中执行函数，返回一个 Promise
 * Array.from 将类数组对象转化为对象
 * page.click() 点击一个元素
-* iframe.$eval() 相当于在 iframe 中运行 * document.queryselector 获取指定元素，并将其作为第一个参数传递
-* iframe.$$eval 相当于在 iframe 中运行 * document.querySelectorAll 获取指定元素数组，并将其作为第一个参数传递
+* iframe.$eval() 相当于在 iframe 中运行
+* document.queryselector 获取指定元素，并将其作为第一个参数传递
+* iframe.$$eval 相当于在 iframe 中运行
+* document.querySelectorAll 获取指定元素数组，并将其作为第一个参数传递
+* page.waitForNavigation  此方法在页面跳转到一个新地址或重新加载时解析，如果你的代码会间接引起页面跳转，这个方法比较有用
