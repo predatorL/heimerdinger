@@ -1,9 +1,18 @@
 /**
- * TODO: 太奇葩了 这个登录是什么鬼
+ * TODO: 密码登录太奇葩了 只能用二维码了
  * */
 const puppeteer = require('puppeteer');
-const accountConf = require('./local_config.json');
+
+
+
 (async () => {
+    const toDo = async function () {
+        console.log('Page loaded!');
+        count ++;
+        if(count === 2) {
+            await page.goto('https://www.zhisiyun.com/admin/tm/cardrecord/hr_list_v2');
+        }
+    }
     const browser = await(puppeteer.launch({
         //设置超时时间
         // timeout: 15000,
@@ -19,27 +28,10 @@ const accountConf = require('./local_config.json');
         }
     }));
     const page = await browser.newPage();
-    await page.goto('https://www.zhisiyun.com/portal_v2/#');
-    //  点击系统登录
-    await page.click('.sign_in');
-    // 输入密码
-    // await page.waitFor(3000);
-    await page.type('.sign_view.sign_view_next .company input[name="client"]', accountConf.company, {delay: 80});
-    await page.type('.sign_view.sign_view_next .company input[name="username"]', accountConf.account, {delay: 80});
-    await page.type('.sign_view.sign_view_next .company input[name="password"]', accountConf.pwd, {delay: 80});
-    await page.focus('.sign_view.sign_view_next .company input[name="password"]');
-    await page.waitFor(2000);
-    // 点击登录
-    await page.click('.sign_view.sign_view_next .submit_btn');
-    // await page.waitFor(2000);
-    // 等待页面加载出来，等同于window.onload
-    await page.waitForNavigation({
-        waitUntil: 'load'
-    });
-    await page.goto('https://www.zhisiyun.com/admin/tm/cardrecord/hr_list_v2');
-
+    let count = 0;
+    page.on('load', toDo);
+    await page.goto('https://www.zhisiyun.com/work_wx_qrcode/');
     // await page.waitFor(30000);
-    // await page.goto('https://www.zhisiyun.com/admin/tm/cardrecord/hr_list_v2');
     // await page.screenshot({
     //     path: __dirname + '/images/portal_v2.png',
     //     type: 'png',
