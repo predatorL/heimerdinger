@@ -2,7 +2,7 @@
  * TODO: 太奇葩了 这个登录是什么鬼
  * */
 const puppeteer = require('puppeteer');
-const accountConf = require('./local_config.json');
+const accountConf = require('../local_config.json');
 (async () => {
     const browser = await(puppeteer.launch({
         //设置超时时间

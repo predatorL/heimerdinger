@@ -2,8 +2,7 @@
  * TODO: 密码登录太奇葩了 只能用二维码了
  * */
 const puppeteer = require('puppeteer');
-
-
+const resHandle = require('./resHandle');
 
 (async () => {
     const toDo = async function () {
@@ -30,6 +29,9 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage();
     let count = 0;
     page.on('load', toDo);
+
+    page.on('response', resHandle.bind(this, page));
+
     await page.goto('https://www.zhisiyun.com/work_wx_qrcode/');
     // await page.waitFor(30000);
     // await page.screenshot({
