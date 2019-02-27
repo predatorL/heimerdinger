@@ -16,3 +16,10 @@
 * iframe.$$eval 相当于在 iframe 中运行
 * document.querySelectorAll 获取指定元素数组，并将其作为第一个参数传递
 * page.waitForNavigation  此方法在页面跳转到一个新地址或重新加载时解析，如果你的代码会间接引起页面跳转，这个方法比较有用
+
+## 知识点2
+* page.$$eval
+    - pageFunction中的console.log之类的信息都是在页面控制台中输出的，而不是在终端
+    - pageFunction中能拿到真实页面的上下文，比如jQuery之类的
+*  page.waitForXXX 系列 好好利用下，至少比page.on要好一些，同步
+    - page.waitForResponse(urlOrPredicate[, options])

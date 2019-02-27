@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+    <body>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            table,
+            th,
+            tr,
+            td {
+                border: solid 1px #333;
+                font-size: 12px;
+                border-collapse: collapse;
+            }
+        </style>
+    </body>
+    <div id="root">
+        <table>
+            <thead>
+                <tr>
+                    <td rowspan="3">
+                        费用明细
+                        <p>Details of Expenses</p>
+                    </td>
+                    <td colspan="2">
+                        费用期间Period
+                    </td>
+                    <td colspan="3">{{`${date.start}-${date.end}`}}</td>
+                    <td>姓名Name</td>
+                    <td colspan="2">{{person.name}}</td>
+                    <td>
+                        部门Department
+                    </td>
+                    <td>技术部</td>
+                    <td></td>
+                    <td>{{bill.total}}</td>
+                    <td>RMB</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        开户行
+                        <p>Account Opening Bank</p>
+                    </td>
+                    <td colspan="3">招商银行</td>
+                    <td>银行账号Bank Account</td>
+                    <td colspan="2">城市City</td>
+                    <td>北京</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="header">
+                    <td>
+                        序号
+                        <p>Receipt No.</p>
+                    </td>
+                    <td>日期Date</td>
+                    <td>
+                        币种
+                        <p>Curr</p>
+                    </td>
+                    <td>
+                        交通费
+                        <p>transportation</p>
+                    </td>
+                    <td>
+                        个人通讯费
+                        <p>Mobile phone</p>
+                    </td>
+                    <td>
+                        加班餐费
+                        <p>OT meal</p>
+                    </td>
+                    <td>
+                        交际应酬
+                        <p>Entertaining</p>
+                    </td>
+                    <td>快递费 postage/express</td>
+                    <td>办公用品 Stationaries</td>
+                    <td>办公室物业水电 Office Utilities</td>
+                    <td>
+                        办公室电话网络
+                        <p>Office Tel & Internet</p>
+                    </td>
+                    <td>其他 Others</td>
+                    <td>合计 Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>加班餐</td>
+                    <td>1</td>
+                    <td>2018/10/9</td>
+                    <td>RMB</td>
+                    <td></td>
+                    <td></td>
+                    <td>30</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="total">
+                    <td colspan="3">小计Subtotal</td>
+                    <td>RMB</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>480.00</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>480.00</td>
+                </tr>
+                <tr class="mark">
+                    <td rowspan="3" colspan="2">
+                        员工签名
+                        <p>Employee Signature</p>
+                        <div class="date">日期Date</div>
+                    </td>
+                    <td rowspan="3" colspan="3">
+                        部门第一负责人
+                        <p>Dept. Leader</p>
+                        <div class="date">日期Date</div>
+                    </td>
+                    <td rowspan="3" colspan="2">
+                        财务审核
+                        <p>Finance Check</p>
+                        <div class="date">日期Date</div>
+                    </td>
+                    <td rowspan="3" colspan="2">
+                        财务总监
+                        <p>FC</p>
+                        <div class="date">日期Date</div>
+                    </td>
+                    <td rowspan="3" colspan="2">
+                        管理层终审
+                        <p>Management Final Approval</p>
+                        <div class="date">日期Date</div>
+                    </td>
+                    <td colspan="2">
+                        借款金额
+                        <p>Total Advance</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        公司应收
+                        <p>Company to Pay</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        公司应付
+                        <p>Company to Collect</p>
+                    </td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="bottom clearfix">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="other"></div>
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                person: {},
+                date: {},
+                bill: {}
+            }
+        });
+    </script>
+</html>
