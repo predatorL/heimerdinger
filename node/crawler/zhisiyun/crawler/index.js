@@ -68,26 +68,30 @@ let targetUrl = '/work_result/work_result_item';
         await page.goto('file:///Users/yc/workplace/room/heimerdinger/node/crawler/zhisiyun/template/table.html');
         await page.waitFor(2000);
         let billData = pageData.filter(item => {
-            // 六日加班
-            if(['六', '日'].indexOf(item.label) !== -1 && item.start_time.trim() !== '') {
-                return true;
-            }
             // 晚上没打卡
             if(item.end_time === '') {
                 return false;
             }
+            // 六日加班
+            if(['六', '日'].indexOf(item.label) !== -1) {
+                return true;
+            }
             return item.end_time.trim().split(':')[0]*1 >= 21;
+        }).map(item => {
+            item.cost = ['六', '日'].indexOf(item.label) !== -1 ? 60 : 30;
+            return item;
         });
         // console.log(people, 'postData', postData, 'billData', billData)
         await page.$$eval('body', (dom, {people, postData, billData}) => {
             vm.person = {
                 name: people.people_name
             };
-            vm.date = {
-                postData
-            };
+            vm.date = postData;
+            let total = billData.reduce((all, curr) => {
+                return all + curr.cost
+            }, 0)
             vm.bill = {
-                total: 360,
+                total: total.toFixed(2),
                 detail: billData
             }
 
