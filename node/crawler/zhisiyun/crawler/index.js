@@ -76,26 +76,22 @@ let targetUrl = '/work_result/work_result_item';
             if(item.end_time === '') {
                 return false;
             }
-            return item.end_time.trim().split('.')[0]*1 > 21;
-        })
-        // .map(item => {
-
-        // });
-        await page.$$eval('body', (trs) => {
+            return item.end_time.trim().split(':')[0]*1 >= 21;
+        });
+        // console.log(people, 'postData', postData, 'billData', billData)
+        await page.$$eval('body', (dom, {people, postData, billData}) => {
             vm.person = {
-                name: 2222
-            }
+                name: people.people_name
+            };
             vm.date = {
-                start: 1111,
-                end: 2222,
-            }
+                postData
+            };
             vm.bill = {
                 total: 360,
-                detail: []
+                detail: billData
             }
-        })
-        console.log('waitFor $$eval', pageData)
 
+        }, {people, postData, billData});
     });
     await page.goto('https://www.zhisiyun.com/work_wx_qrcode/');
     // await page.waitFor(30000);
