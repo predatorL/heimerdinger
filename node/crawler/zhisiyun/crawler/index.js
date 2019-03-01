@@ -39,7 +39,6 @@ let targetUrl = '/work_result/work_result_item';
         if(res.url().indexOf(targetUrl) == -1) {
             return;
         }
-        console.log(targetUrl)
         let reqObj = res.request();
         // 请求参数
         let postData = qs.parse(reqObj.postData());
@@ -50,7 +49,8 @@ let targetUrl = '/work_result/work_result_item';
             ...result[0].wrp.people
         };
         // 存储地址
-        let _path = `${__dirname}/data/${people.people_no}/`;
+        let _path = `${__dirname}/../data/${people.people_no}/`;
+        let _fileName = `${postData.start.replace(/\-/g, '')-postData.end.replace(/\-/g, '')}`;
         // 等待两秒让页面加载数据
         await page.waitFor(2000);
         const pageData = await page.$$eval('#work_result_tb tr', (trs) => {
@@ -65,6 +65,11 @@ let targetUrl = '/work_result/work_result_item';
             });
             return arr;
         })
+        await page.screenshot({
+            path: _path + `/images/${_fileName}截图.png`,
+            type: 'png',
+            fullPage: true,
+        });
         await page.goto('file:///Users/yc/workplace/room/heimerdinger/node/crawler/zhisiyun/template/table.html');
         await page.waitFor(2000);
         let billData = pageData.filter(item => {
@@ -83,6 +88,7 @@ let targetUrl = '/work_result/work_result_item';
         });
         // console.log(people, 'postData', postData, 'billData', billData)
         await page.$$eval('body', (dom, {people, postData, billData}) => {
+            document.title = `${fileName}报销单`;
             vm.person = {
                 name: people.people_name
             };
@@ -93,16 +99,11 @@ let targetUrl = '/work_result/work_result_item';
             vm.bill = {
                 total: total.toFixed(2),
                 detail: billData
-            }
-
-        }, {people, postData, billData});
+            };
+        }, {people, postData, billData, fileName: _fileName});
     });
     await page.goto('https://www.zhisiyun.com/work_wx_qrcode/');
     // await page.waitFor(30000);
-    // await page.screenshot({
-    //     path: __dirname + '/images/portal_v2.png',
-    //     type: 'png',
-    //     fullPage: true,
-    // });
+
     // browser.close();
 })();

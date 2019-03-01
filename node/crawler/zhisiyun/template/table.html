@@ -225,7 +225,7 @@
                     </td>
                     <td class="center">技术部</td>
                     <td></td>
-                    <td class="center">{{ bill.total }}</td>
+                    <td class="center">{{ transNum(bill.total) }}</td>
                     <td class="center">RMB</td>
                 </tr>
                 <tr class="center">
@@ -290,28 +290,28 @@
                     <td class="center">RMB</td>
                     <td></td>
                     <td></td>
-                    <td>{{ item.cost }}</td>
+                    <td>{{ transNum(item.cost) }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{ item.cost }}</td>
+                    <td>{{ transNum(item.cost) }}</td>
                 </tr>
                 <tr class="total">
                     <td colspan="3">小计Subtotal</td>
                     <td class="center">RMB</td>
                     <td class="center">-</td>
                     <td class="center">-</td>
-                    <td>{{ bill.total }}</td>
+                    <td>{{ transNum(bill.total) }}</td>
                     <td class="center">-</td>
                     <td class="center">-</td>
                     <td class="center">-</td>
                     <td class="center">-</td>
                     <td class="center">-</td>
                     <td class="center">-</td>
-                    <td>{{ bill.total }}</td>
+                    <td>{{ transNum(bill.total) }}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -389,11 +389,9 @@
         </footer>
     </div>
     <script>
-        var vm = new Vue({
-            el: '#root',
-            data: {
+        let demo = {
                 person: { name: '李海洋' },
-                date: { start: '2019-02-01', end: '2019-02-28', people_ids: '["5b14a8e6a7b63bc02498b4e6"]' },
+                date: { start: '2019-02-01', end: '2019-02-28', },
                 bill: {
                     total: 180,
                     detail: [
@@ -405,11 +403,24 @@
                         { date: '2019-02-26', end_time: '21:37', start_time: '09:45', label: '二', cost: 30 }
                     ]
                 }
+            };
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                person: {  },
+                date: {  },
+                bill: {
+                    total: 0,
+                    detail: []
+                }
             },
             methods: {
                 transDate(str) {
                     let temp = str.split('-');
                     return `${temp[0]}年${temp[1]}月${temp[2]}日`;
+                },
+                transNum(num) {
+                    return (num * 1).toFixed(2);
                 }
             }
         });
