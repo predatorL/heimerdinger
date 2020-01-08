@@ -2,11 +2,33 @@
 
 const Controller = require('egg').Controller;
 
-class HomeController extends Controller {
-  async index() {
-    const { ctx } = this;
-    ctx.body = 'hi, egg';
-  }
+class EmailController extends Controller {
+
+    // 批量查询
+    async index() {
+
+    }
+
+    // 查询单个
+    async show() {
+
+    }
+
+    // 创建
+    async create() {
+
+    }
+
+    // 更新
+    async update() {
+
+    }
+
+    // 移除
+    async destroy() {
+
+    }
+
 }
 
-module.exports = HomeController;
+module.exports = EmailController;
