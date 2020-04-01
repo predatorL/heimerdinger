@@ -2,10 +2,10 @@
 
 const _exports = {};
 
-// mysql
-exports.mysql = {
+// sequelize
+exports.sequelize = {
   enable: true,
-  package: 'egg-mysql'
+  package: 'egg-sequelize'
 }
 
 /** @type Egg.EggPlugin */
