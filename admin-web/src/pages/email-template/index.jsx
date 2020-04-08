@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import ProTable from '@ant-design/pro-table';
 import CreateForm from './components/CreateForm';
-import UpdateForm from './components/UpdateForm';
 import { queryRule, updateRule, addRule, removeRule } from './service';
 
 /**
@@ -79,7 +78,7 @@ const TableList = () => {
   const actionRef = useRef();
   const columns = [
     {
-      title: '规则名称',
+      title: '邮件名',
       dataIndex: 'name',
     },
     {
@@ -87,38 +86,22 @@ const TableList = () => {
       dataIndex: 'desc',
     },
     {
-      title: '服务调用次数',
+      title: '关联任务',
       dataIndex: 'callNo',
-      sorter: true,
-      renderText: val => `${val} 万`,
     },
     {
       title: '状态',
       dataIndex: 'status',
       valueEnum: {
         0: {
-          text: '关闭',
+          text: '禁用',
           status: 'Default',
         },
         1: {
-          text: '运行中',
+          text: '启用',
           status: 'Processing',
         },
-        2: {
-          text: '已上线',
-          status: 'Success',
-        },
-        3: {
-          text: '异常',
-          status: 'Error',
-        },
       },
-    },
-    {
-      title: '上次调度时间',
-      dataIndex: 'updatedAt',
-      sorter: true,
-      valueType: 'dateTime',
     },
     {
       title: '操作',
@@ -128,14 +111,19 @@ const TableList = () => {
         <>
           <a
             onClick={() => {
-              handleUpdateModalVisible(true);
               setStepFormValues(record);
             }}
           >
-            配置
+            编辑模板
           </a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
+          <a
+            onClick={() => {
+              deleteItem(record);
+            }}
+          >
+            删除
+          </a>
         </>
       ),
     },
@@ -149,49 +137,10 @@ const TableList = () => {
         toolBarRender={(action, { selectedRows }) => [
           <Button icon="plus" type="primary" onClick={() => handleModalVisible(true)}>
             新建
-          </Button>,
-          selectedRows && selectedRows.length > 0 && (
-            <Dropdown
-              overlay={
-                <Menu
-                  onClick={async e => {
-                    if (e.key === 'remove') {
-                      await handleRemove(selectedRows);
-                      action.reload();
-                    }
-                  }}
-                  selectedKeys={[]}
-                >
-                  <Menu.Item key="remove">批量删除</Menu.Item>
-                  <Menu.Item key="approval">批量审批</Menu.Item>
-                </Menu>
-              }
-            >
-              <Button>
-                批量操作 <Icon type="down" />
-              </Button>
-            </Dropdown>
-          ),
+          </Button>
         ]}
-        tableAlertRender={(selectedRowKeys, selectedRows) => (
-          <div>
-            已选择{' '}
-            <a
-              style={{
-                fontWeight: 600,
-              }}
-            >
-              {selectedRowKeys.length}
-            </a>{' '}
-            项&nbsp;&nbsp;
-            <span>
-              服务调用次数总计 {selectedRows.reduce((pre, item) => pre + item.callNo, 0)} 万
-            </span>
-          </div>
-        )}
         request={params => queryRule(params)}
         columns={columns}
-        rowSelection={{}}
       />
       <CreateForm
         onSubmit={async value => {
@@ -208,28 +157,6 @@ const TableList = () => {
         onCancel={() => handleModalVisible(false)}
         modalVisible={createModalVisible}
       />
-      {stepFormValues && Object.keys(stepFormValues).length ? (
-        <UpdateForm
-          onSubmit={async value => {
-            const success = await handleUpdate(value);
-
-            if (success) {
-              handleModalVisible(false);
-              setStepFormValues({});
-
-              if (actionRef.current) {
-                actionRef.current.reload();
-              }
-            }
-          }}
-          onCancel={() => {
-            handleUpdateModalVisible(false);
-            setStepFormValues({});
-          }}
-          updateModalVisible={updateModalVisible}
-          values={stepFormValues}
-        />
-      ) : null}
     </PageHeaderWrapper>
   );
 };

@@ -28,15 +28,9 @@ module.exports = appInfo => {
 
   config.sequelize = {
     // 单数据库信息配置
-    client: {
-      host: 'localhost',
-      port: '3306',
-      user: 'root',
-      password: '123456',
-      database: 'heimerdinger'
-    },
-    app: true,
-    agent: false
+    dialect: 'sqlite',
+    host: 'localhost',
+    storage: './db/database.sqlite'
   }
 
   return {
