@@ -30,7 +30,7 @@ module.exports = appInfo => {
     // 单数据库信息配置
     dialect: 'sqlite',
     host: 'localhost',
-    storage: './db/database.sqlite'
+    storage: './db/heimerdinger.db'
   }
 
   return {
