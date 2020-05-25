@@ -8,5 +8,10 @@ _exports.sequelize = {
   package: 'egg-sequelize'
 }
 
+_exports.nunjucks = {
+  enable: true,
+  package: 'egg-view-nunjucks'
+}
+
 /** @type Egg.EggPlugin */
 module.exports = _exports;

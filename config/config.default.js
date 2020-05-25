@@ -2,6 +2,7 @@
 
 'use strict';
 
+const path = require('path');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -31,6 +32,13 @@ module.exports = appInfo => {
     dialect: 'sqlite',
     host: 'localhost',
     storage: './db/app.db'
+  }
+
+  config.view = {
+    root: path.join(appInfo.baseDir, 'app/view'),
+    mapping: {
+      '.nj': 'nunjucks'
+    }
   }
 
   return {
